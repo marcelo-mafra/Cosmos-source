@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodeSet version="1.0">
+  <view uin="zdtx19d4s_v">
+    <property name="$defaultDiagram" value="true" />
+    <property name="$metaclass" value="ClassDiagram20" />
+    <property name="$name" value="default" />
+    <reference referencedUin="design:view:::70u2paaof_v">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="10,10,52,42" />
+    </reference>
+    <reference referencedUin="design:view:::6dqgt4nyr4jjw3i_v">
+      <property name="$shortcutReference" value="true" />
+    </reference>
+    <reference referencedUin="design:view:::0ogjsvddf_v">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="81,1,87,102" />
+    </reference>
+    <reference referencedUin="design:view:::09gjmcb0lzxg2nl_v">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="187,1,134,42" />
+    </reference>
+    <reference referencedUin="design:node:::9hflekq2m_n">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="32,71,40,30" />
+      <reference referencedUin="label:$name:design:node:::9hflekq2m_n">
+        <property name="bounds" value="16,111,73,16" />
+      </reference>
+    </reference>
+    <reference referencedUin="design:node:::qkhbrjobm_n">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="187,62,116,82" />
+      <reference referencedUin="design:link:::3nhay429r_l:qkhbrjobm_n">
+        <property name="sourceAnchor" value="187,86" />
+        <property name="targetAnchor" value="63,86" />
+        <property name="bendpoints" value="" />
+      </reference>
+    </reference>
+    <reference referencedUin="design:node:::yzf97y5w8pr_n">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="138,141,40,30" />
+      <reference referencedUin="label:$name:design:node:::yzf97y5w8pr_n">
+        <property name="bounds" value="99,181,118,16" />
+      </reference>
+    </reference>
+    <reference referencedUin="design:node:::lonnu5825di_n">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="89,141,40,30" />
+      <reference referencedUin="label:$name:design:node:::lonnu5825di_n">
+        <property name="bounds" value="50,181,118,16" />
+      </reference>
+    </reference>
+    <reference referencedUin="design:node:::pagzk4cpyan_n">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="40,141,40,30" />
+      <reference referencedUin="label:$name:design:node:::pagzk4cpyan_n">
+        <property name="bounds" value="20,181,81,16" />
+      </reference>
+    </reference>
+    <reference referencedUin="design:node:::y0bo0l0h6h6i9nish_n">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="359,1,40,30" />
+      <reference referencedUin="label:$name:design:node:::y0bo0l0h6h6i9nish_n">
+        <property name="bounds" value="344,41,70,16" />
+      </reference>
+    </reference>
+  </view>
+</nodeSet>
