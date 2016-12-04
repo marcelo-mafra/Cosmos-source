@@ -74,3 +74,4 @@ __recovery/
 #General
 *.tmp
 *.pdf
+*.log
