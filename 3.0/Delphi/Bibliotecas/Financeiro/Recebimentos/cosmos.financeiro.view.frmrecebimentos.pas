@@ -12,7 +12,7 @@ uses
   cosmos.business.focos, cosmos.Framework.forms.datadialogs, System.Actions,
   Datasnap.DSConnect, Cosmos.Framework.Interfaces.Dataacess, cosmos.classes.security,
   Data.DBXCommon, Cosmos.Framework.Interfaces.Applications, cosmos.system.formsconst,
-  System.ImageList;
+  System.ImageList, cosmos.business.financeiro;
 
 type
   TFrmRecebimentos = class(TFrmCosmosDocked)
@@ -161,6 +161,7 @@ var
 codrec, codcad: integer;
 begin
   inherited;
+  //Modifica os dados de um recebimento já registrado.
   if (CdsRecebimentos.Active) and not (CdsRecebimentos.IsEmpty) then
    begin
      if not Assigned(FrmEditarRecebimento) then
@@ -222,7 +223,7 @@ var
  aInfo: TCosmosData;
 begin
   inherited;
- //Cancela um recebimento feito.
+ //Cancela um recebimento já registrado.
  aInfo := TCosmosData.Create(5);
 
  try
@@ -254,6 +255,7 @@ var
  IFinanceiro: ICosmosFinanceiro;
 begin
   inherited;
+  //Cadastra um período de dispensas de contribuição para um contribuinte.
   IFinanceiro := Application.MainForm as ICosmosFinanceiro;
 
   try
@@ -278,6 +280,7 @@ codcad: integer;
 Valor: variant;
 begin
   inherited;
+  //Registra uma nova mensalidade.
   if (CdsCadastrado.Active) and not (CdsCadastrado.IsEmpty) then
    begin
      try
@@ -288,7 +291,7 @@ begin
 
       if not Assigned(FrmEditarRecebimento) then
        FrmEditarRecebimento := TFrmEditarRecebimento.Create(self);
-      FrmEditarRecebimento.NovoRecebimento(codcad, Valor, 'MEN');
+      FrmEditarRecebimento.NovoRecebimento(codcad, Valor, trMensalidade); //do not localize!
 
      finally
       if Assigned(FrmEditarRecebimento) then
@@ -303,6 +306,7 @@ codcad: integer;
 Valor: variant;
 begin
   inherited;
+  //Registra um novo recebimento de qualquer natureza.
   if (CdsCadastrado.Active) and not (CdsCadastrado.IsEmpty) then
    begin
      try
@@ -337,8 +341,9 @@ var
  sMatricula: string;
 begin
   inherited;
+  //Carrega as contribuições do contribuinte no período corrente.
   sMatricula := EdtMatricula.Text;
-  sMatricula.Trim;
+  sMatricula := sMatricula.Trim;
 
   {Caso o usuário somente tenha informado a parte numérica da matrícula, assume
    que a matrícula informada pertence ao núcleo aberto na seção corrente.}
@@ -378,6 +383,7 @@ var
  AData: TCosmosData;
 begin
  inherited;
+ //Seleciona o contribuinte.
  AData := TCosmosCadastradosDialogs.SelecionarCadastrado(ctAll, scTodos, False);
 
  try
@@ -422,6 +428,7 @@ codcad: integer;
 Valor: variant;
 begin
   inherited;
+  //Registra uma nova taxa de conferência.
   if (CdsCadastrado.Active) and not (CdsCadastrado.IsEmpty) then
    begin
      try
@@ -432,7 +439,7 @@ begin
 
       if not Assigned(FrmEditarRecebimento) then
        FrmEditarRecebimento := TFrmEditarRecebimento.Create(self);
-      FrmEditarRecebimento.NovoRecebimento(codcad, Valor, 'TAX');
+      FrmEditarRecebimento.NovoRecebimento(codcad, Valor, trTxConferencia);
 
      finally
       if Assigned(FrmEditarRecebimento) then
@@ -606,25 +613,26 @@ end;
 
 procedure TFrmRecebimentos.LoadImage;
 var
-  Bs:TStream;
-  Foto:TJPEGImage;
+  aStream:TStream;
+  aImage:TJPEGImage;
 begin
+//Carrega a imagem da foto do contribuinte.
   if (CdsCadastrado.Active) and not (CdsCadastrado.Fields.FieldByName('fotcad').IsNull) then
    begin
     try
-     Bs := CdsCadastrado.CreateBlobStream((CdsCadastrado.Fields.FieldByName('fotcad') as TBlobField),bmRead);
-     if Bs.Size > 0 then
+     aStream := CdsCadastrado.CreateBlobStream((CdsCadastrado.Fields.FieldByName('fotcad') as TBlobField),bmRead);
+     if aStream.Size > 0 then
       begin
-       Foto := TJPEGImage.Create;
-       Foto.LoadFromStream(Bs);
-       ImgFoto.Picture.Assign(Foto);
+       aImage := TJPEGImage.Create;
+       aImage.LoadFromStream(aStream);
+       ImgFoto.Picture.Assign(aImage);
       end
       else
        ImgFoto.Picture.Assign(nil);
 
     finally
-     if Assigned(Foto) then Foto.Free;
-     if Assigned(Bs) then Bs.Destroy;
+     if Assigned(aImage) then aImage.Free;
+     if Assigned(aStream) then aStream.Destroy;
     end;
    end
   else

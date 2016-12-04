@@ -10,7 +10,7 @@ uses
   DBDateTimePicker, cosmos.Framework.Interfaces.Root, cosmos.system.messages,
   cosmos.classes.application, cosmos.system.types, Datasnap.DSConnect,
   cosmos.frames.fkSearch, cosmos.classes.ServerInterface, Data.DBXCommon,
-  Cosmos.Framework.Interfaces.Applications;
+  Cosmos.Framework.Interfaces.Applications, cosmos.business.financeiro;
 
 type
   TFrmEditarRecebimento = class(TForm)
@@ -79,7 +79,7 @@ type
     property IRemoteCon: ICosmosRemoteConnection read GetIRemoteCon;
     procedure NovoRecebimento(const codcad: integer; Valor: variant); overload;
     procedure NovoRecebimento(const codcad: integer; Valor: variant;
-     Tipo: string); overload;
+     Tipo: TTiposRecebimento); overload;
     procedure EditarRecebimento(const codrec, codcad: integer; Data: Olevariant);
 
     property CurrentDate: TDateTime read FCurrentDate;
@@ -253,7 +253,7 @@ begin
 end;
 
 procedure TFrmEditarRecebimento.NovoRecebimento(const codcad: integer;
-  Valor: variant; Tipo: string);
+  Valor: variant; Tipo: TTiposRecebimento);
 begin
   FCodcad := codcad;
   FValor := Valor;

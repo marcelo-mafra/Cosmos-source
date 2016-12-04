@@ -8,10 +8,19 @@ uses
 
 type
 
-//business financial objects
+ //Objetos de negócio do módulo financeiro.
+  TTiposRecebimento = (trMensalidade, trTxConferencia, trDoacao);
 
   //Motivos de cancelamentos de um recebimento.
   TMotivoCancelamento = (mcEquivoco, mcDesistencia, mcSystemError);
+
+  //Classe utilitária acessória com métodos de classe relacionados a recebimentos de valores.
+  TTipoRecebimentosInfo = class
+   private
+
+   public
+    class function ToStringValue(const Tipo: TTiposRecebimento): string;
+  end;
 
   TCaixa = class
   private
@@ -64,6 +73,18 @@ end;
 procedure TCaixa.RegistrarEncerramento;
 begin
  FActivated := False;
+end;
+
+{ TTipoRecebimentosInfo }
+
+class function TTipoRecebimentosInfo.ToStringValue(
+  const Tipo: TTiposRecebimento): string;
+begin
+ case Tipo of
+   trMensalidade: Result := 'MEN'; //do not localize!
+   trTxConferencia: Result := 'TAX';//do not localize!
+   trDoacao: Result := 'DOA';//do not localize!
+ end;
 end;
 
 end.
