@@ -69,6 +69,7 @@ __recovery/
 *.fdb
 *.fbk
 *.sql
+*.cds
 
 #General
 *.tmp
