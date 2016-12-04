@@ -1,0 +1,38 @@
+inherited FrmMainForm_NmXhdpiPh: TFrmMainForm_NmXhdpiPh
+  ClientHeight = 615
+  ClientWidth = 400
+  Position = DefaultPosOnly
+  StyleLookup = 'calloutpanelstyle'
+  DesignerMasterStyle = 3
+  inherited ToolBar1: TToolBar
+    Size.Width = 400.000000000000000000
+    inherited AniIndicator: TAniIndicator
+      Position.X = 357.849975585937500000
+    end
+  end
+  inherited TabMainDesigner: TTabControl
+    Size.Width = 400.000000000000000000
+    Size.Height = 569.000000000000000000
+    inherited TabListOptions: TTabItem
+      ExplicitSize.cx = 400.000000000000000000
+      ExplicitSize.cy = 49.000000000000000000
+      inherited ListBox1: TListBox
+        Size.Width = 400.000000000000000000
+        Size.Height = 520.000000000000000000
+        Viewport.Width = 398.000000000000000000
+        Viewport.Height = 518.000000000000000000
+        inherited ListBoxGroupHeader1: TListBoxGroupHeader
+          Size.Width = 398.000000000000000000
+        end
+      end
+    end
+    inherited TabShowGraphic: TTabItem
+      ExplicitSize.cx = 200.000000000000000000
+      ExplicitSize.cy = 49.000000000000000000
+    end
+    inherited TabShowData: TTabItem
+      ExplicitSize.cx = 134.000000000000000000
+      ExplicitSize.cy = 49.000000000000000000
+    end
+  end
+end

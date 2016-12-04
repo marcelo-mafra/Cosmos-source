@@ -1,0 +1,60 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{EE23A327-612C-4C86-A4E5-BC125C727EB5}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Servers\AppServer\RestServer.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Servers\Apache\cosmos_bi.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Client\cosmosbi.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="RestServer">
+        <MSBuild Projects="Servers\AppServer\RestServer.dproj"/>
+    </Target>
+    <Target Name="RestServer:Clean">
+        <MSBuild Projects="Servers\AppServer\RestServer.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="RestServer:Make">
+        <MSBuild Projects="Servers\AppServer\RestServer.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="cosmos_bi">
+        <MSBuild Projects="Servers\Apache\cosmos_bi.dproj"/>
+    </Target>
+    <Target Name="cosmos_bi:Clean">
+        <MSBuild Projects="Servers\Apache\cosmos_bi.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="cosmos_bi:Make">
+        <MSBuild Projects="Servers\Apache\cosmos_bi.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="cosmosbi">
+        <MSBuild Projects="Client\cosmosbi.dproj"/>
+    </Target>
+    <Target Name="cosmosbi:Clean">
+        <MSBuild Projects="Client\cosmosbi.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="cosmosbi:Make">
+        <MSBuild Projects="Client\cosmosbi.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="RestServer;cosmos_bi;cosmosbi"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="RestServer:Clean;cosmos_bi:Clean;cosmosbi:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="RestServer:Make;cosmos_bi:Make;cosmosbi:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
